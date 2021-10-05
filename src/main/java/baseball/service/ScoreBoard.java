@@ -15,17 +15,42 @@ public class ScoreBoard {
 
 	public void record(boolean isStrike, boolean isBall) {
 		if (isStrike) {
-			Score score = this.scores.get(ScoreStatus.STRIKE);
+			Score score = getStrikeScore();
 			score.add();
 		}
 		if (isBall) {
-			Score score = this.scores.get(ScoreStatus.BALL);
+			Score score = getBallScore();
 			score.add();
 		}
 	}
 
-	public boolean threeStrike() {
-		return this.scores.get(ScoreStatus.STRIKE).readRecord() == 3;
+	public boolean isThreeStrike() {
+		return getStrikeScore().readRecord() == 3;
+	}
+
+	public String umpire() {
+		StringBuilder sb = new StringBuilder();
+		Score scoreInStrike = getStrikeScore();
+		Score scoreInBall = getBallScore();
+		if (scoreInStrike.isZero() && scoreInBall.isZero()) {
+			return ScoreStatus.BASE_ON_BALLS.getUmpire();
+		}
+
+		if (!scoreInStrike.isZero()) {
+			sb.append(scoreInStrike.readRecord()).append(ScoreStatus.STRIKE.getUmpire()).append(" ");
+		}
+		if ((!scoreInBall.isZero())) {
+			sb.append(scoreInBall.readRecord()).append(ScoreStatus.BALL.getUmpire());
+		}
+		return sb.toString();
+	}
+
+	private Score getBallScore() {
+		return this.scores.get(ScoreStatus.BALL);
+	}
+
+	private Score getStrikeScore() {
+		return this.scores.get(ScoreStatus.STRIKE);
 	}
 
 	@Override

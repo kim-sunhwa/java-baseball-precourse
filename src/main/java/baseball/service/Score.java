@@ -23,6 +23,10 @@ public class Score {
 		return this.record;
 	}
 
+	public boolean isZero() {
+		return this.record == 0;
+	}
+
 	@Override
 	public String toString() {
 		return "Score{" +

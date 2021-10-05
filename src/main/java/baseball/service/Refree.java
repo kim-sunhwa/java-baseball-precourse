@@ -16,7 +16,7 @@ public class Refree {
 		this.pitcher = pitcher;
 	}
 
-	public boolean play() {
+	public ScoreBoard play() {
 		Map<Integer, Integer> pitching = pitcher.play();
 		ScoreBoard scoreBoard = new ScoreBoard();
 		for (Integer number : pitching.keySet()) {
@@ -25,7 +25,7 @@ public class Refree {
 
 			scoreBoard.record(strike, ball);
 		}
-		return scoreBoard.threeStrike();
+		return scoreBoard;
 	}
 
 	public void isValidPlayerStrategy(String playerNumber) {

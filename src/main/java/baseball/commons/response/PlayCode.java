@@ -14,4 +14,6 @@ public interface PlayCode {
 	final String SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 끝";
 	final String RESTART = "게임을 시작하려면 1, 종료하려면 2를 입력하세요.";
 	final String PLAY_END = "종료합니다.";
+	final String SELECTED_RESTART = "1";
+	final String SELECTED_END = "2";
 }

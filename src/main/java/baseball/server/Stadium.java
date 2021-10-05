@@ -1,15 +1,14 @@
 package baseball.server;
 
-import baseball.commons.response.PlayCode;
 import baseball.controller.BaseballField;
 import baseball.model.Batter;
 import baseball.model.Pitcher;
 import baseball.service.Refree;
-import nextstep.utils.Console;
 
 public class Stadium {
 
-	private Stadium stadium;
+	private Stadium() {
+	}
 
 	public static void goIn() {
 		Stadium stadium = new Stadium();
@@ -22,13 +21,16 @@ public class Stadium {
 			Refree refree = new Refree(batter, pitcher);
 			BaseballField baseballField = new BaseballField(refree);
 
-			boolean isEnd = baseballField.start();
-
-			if (isEnd) {
-				System.out.println(PlayCode.RESTART);
-				String s = Console.readLine();
-				restart = (s.equals("1"));
-			}
+			boolean isEnd = baseballField.start();        // 3스트라이크 결과
+			restart = baseballField.theEndOrRestart(isEnd);    // 사용자 재시작/종료 결정
+			batter = stadium.isRestart(isEnd, restart, batter);
 		}
+	}
+
+	private Batter isRestart(boolean isEnd, boolean restart, Batter batter) {
+		if (!isEnd || !restart) {
+			return batter;
+		}
+		return new Batter();
 	}
 }
