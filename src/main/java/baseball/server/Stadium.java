@@ -11,18 +11,20 @@ public class Stadium {
 	private Stadium() {
 	}
 
-	public static void goIn() {
+	public static void :
+
+	goIn() {
 		Stadium stadium = new Stadium();
 		boolean restart = true;
 		Batter batter = PlayerFactory.standOnBatter();
 
 		while (restart) {
-			System.out.println(batter);
 			Pitcher pitcher = PlayerFactory.standOnPitcher();
 			Refree refree = new Refree(batter, pitcher);
 			BaseballField baseballField = new BaseballField(refree);
 
-			boolean isEnd = baseballField.start();        // 3스트라이크 결과
+			boolean isEnd = baseballField.play();        // 3스트라이크 결과
+
 			restart = baseballField.theEndOrRestart(isEnd);    // 사용자 재시작/종료 결정
 			batter = stadium.isRestart(isEnd, restart, batter);
 		}

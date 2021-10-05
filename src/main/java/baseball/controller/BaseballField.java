@@ -22,7 +22,7 @@ public class BaseballField {
 		this.refree = refree;
 	}
 
-	public boolean start() {
+	public boolean play() {
 		readyToPlayer();
 		ScoreBoard scoreBoard = this.refree.play();
 		Message.print(scoreBoard.umpire());
