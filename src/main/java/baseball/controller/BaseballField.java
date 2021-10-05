@@ -13,9 +13,9 @@ public class BaseballField {
 		this.refree = refree;
 	}
 
-	public void start() {
+	public boolean start() {
 		readyToPlayer();
-		this.refree.play();
+		return this.refree.play();
 	}
 
 	private void readyToPlayer() {

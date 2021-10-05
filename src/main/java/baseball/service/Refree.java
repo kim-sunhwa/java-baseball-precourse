@@ -16,14 +16,16 @@ public class Refree {
 		this.pitcher = pitcher;
 	}
 
-	public void play() {
+	public boolean play() {
 		Map<Integer, Integer> pitching = pitcher.play();
+		ScoreBoard scoreBoard = new ScoreBoard();
 		for (Integer number : pitching.keySet()) {
 			boolean strike = this.batter.isStrike(number, pitching.get(number));
 			boolean ball = this.batter.isBall(number, pitching.get(number));
-			System.out.println("스트라이크 : " + strike);
-			System.out.println("볼 : " + ball);
+
+			scoreBoard.record(strike, ball);
 		}
+		return scoreBoard.threeStrike();
 	}
 
 	public void isValidPlayerStrategy(String playerNumber) {

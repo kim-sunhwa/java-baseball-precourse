@@ -22,11 +22,13 @@ public class Stadium {
 			Refree refree = new Refree(batter, pitcher);
 			BaseballField baseballField = new BaseballField(refree);
 
-			baseballField.start();
+			boolean isEnd = baseballField.start();
 
-			System.out.println(PlayCode.RESTART);
-			String s = Console.readLine();
-			restart = (s.equals("1"));
+			if (isEnd) {
+				System.out.println(PlayCode.RESTART);
+				String s = Console.readLine();
+				restart = (s.equals("1"));
+			}
 		}
 	}
 }
