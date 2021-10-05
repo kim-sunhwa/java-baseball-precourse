@@ -11,9 +11,7 @@ public class Stadium {
 	private Stadium() {
 	}
 
-	public static void :
-
-	goIn() {
+	public static void goIn() {
 		Stadium stadium = new Stadium();
 		boolean restart = true;
 		Batter batter = PlayerFactory.standOnBatter();
