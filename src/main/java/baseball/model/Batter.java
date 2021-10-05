@@ -25,6 +25,22 @@ public class Batter {
 		strategy();
 	}
 
+	public boolean isStrike(int number, int idx) {
+		if (playLists.containsKey(number)) {
+			PlayCard playCard = playLists.get(number);
+			return playCard.isStrike(number, idx);
+		}
+		return false;
+	}
+
+	public boolean isBall(Integer number, Integer idx) {
+		if (playLists.containsKey(number)) {
+			PlayCard playCard = playLists.get(number);
+			return playCard.isBall(number, idx);
+		}
+		return false;
+	}
+
 	private void createUniquePlayLists() {
 		int number = select();
 		if (!playLists.containsKey(number)) {

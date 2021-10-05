@@ -15,6 +15,7 @@ public class BaseballField {
 		Pitcher pitcher = readyToPlayer();
 
 		Refree refree = new Refree(batter, pitcher);
+		refree.play();
 	}
 
 	private Pitcher readyToPlayer() {
