@@ -4,6 +4,7 @@ import java.util.Map;
 
 import baseball.model.Batter;
 import baseball.model.Pitcher;
+import baseball.model.PlayNumber;
 
 public class Refree {
 
@@ -16,7 +17,6 @@ public class Refree {
 	}
 
 	public void play() {
-		System.out.println("play ?? ");
 		Map<Integer, Integer> pitching = pitcher.play();
 		for (Integer number : pitching.keySet()) {
 			boolean strike = this.batter.isStrike(number, pitching.get(number));
@@ -27,6 +27,7 @@ public class Refree {
 	}
 
 	public void isValidPlayerStrategy(String playerNumber) {
-		this.pitcher.isValid(playerNumber);
+		PlayNumber.isValid(playerNumber);
+		this.pitcher.strategy(playerNumber);
 	}
 }
