@@ -9,7 +9,7 @@ public class Pitcher {
 	// player
 	private Map<Integer, Integer> numbers;
 
-	public Pitcher() {
+	Pitcher() {
 		this.numbers = new HashMap<>();
 	}
 

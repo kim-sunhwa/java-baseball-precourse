@@ -12,7 +12,7 @@ public class Batter {
 	// computer
 	private Map<Integer, PlayCard> playLists;
 
-	public Batter() {
+	Batter() {
 		this.playLists = new HashMap<>();
 		strategy();
 	}

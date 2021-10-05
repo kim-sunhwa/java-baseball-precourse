@@ -3,6 +3,7 @@ package baseball.server;
 import baseball.controller.BaseballField;
 import baseball.model.Batter;
 import baseball.model.Pitcher;
+import baseball.model.PlayerFactory;
 import baseball.service.Refree;
 
 public class Stadium {
@@ -13,11 +14,11 @@ public class Stadium {
 	public static void goIn() {
 		Stadium stadium = new Stadium();
 		boolean restart = true;
-		Batter batter = new Batter();
+		Batter batter = PlayerFactory.standOnBatter();
 
 		while (restart) {
 			System.out.println(batter);
-			Pitcher pitcher = new Pitcher();
+			Pitcher pitcher = PlayerFactory.standOnPitcher();
 			Refree refree = new Refree(batter, pitcher);
 			BaseballField baseballField = new BaseballField(refree);
 
@@ -31,6 +32,6 @@ public class Stadium {
 		if (!isEnd || !restart) {
 			return batter;
 		}
-		return new Batter();
+		return PlayerFactory.standOnBatter();
 	}
 }

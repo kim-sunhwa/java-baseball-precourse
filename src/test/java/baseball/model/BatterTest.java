@@ -14,8 +14,7 @@ class BatterTest {
 	private String batterNumber = getBatterNumber();
 
 	private Batter getInstance() {
-		Batter newBatter = new Batter();
-		return newBatter;
+		return PlayerFactory.standOnBatter();
 	}
 
 	private String getBatterNumber() {
