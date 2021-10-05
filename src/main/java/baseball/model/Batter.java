@@ -4,31 +4,42 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import baseball.commons.exceptions.InvalidRangeException;
+import baseball.commons.exceptions.BaseException;
 import baseball.commons.response.PlayCode;
 import nextstep.utils.Randoms;
 
 public class Batter {
 	// computer
-	private Map<Integer, Integer> playLists;
+	private Map<Integer, PlayCard> playLists;
 
 	public Batter() {
 		this.playLists = new HashMap<>();
-		strategy(select());
+		strategy();
 	}
 
-	public void strategy(int number) {
-		if (number < PlayCode.MIN || number > PlayCode.MAX) {
-			throw new InvalidRangeException();
-		}
+	public void strategy() {
 		if (playLists.size() >= PlayCode.LENGTH) {
 			return;
 		}
-		int idx = getIndex();
+		createUniquePlayLists();
+		strategy();
+	}
+
+	private void createUniquePlayLists() {
+		int number = select();
 		if (!playLists.containsKey(number)) {
-			playLists.put(number, idx++);
+			createPlayCard(number);
 		}
-		strategy(select());
+	}
+
+	private void createPlayCard(int number) {
+		int idx = getIndex();
+		try {
+			PlayCard playCard = new PlayCard(number, idx);
+			playLists.put(number, playCard);
+		} catch (BaseException exception) {
+			createPlayCard(select());
+		}
 	}
 
 	private int getIndex() {
@@ -43,8 +54,8 @@ public class Batter {
 	public String toString() {
 		int[] arr = new int[PlayCode.LENGTH];
 		for (Integer number : playLists.keySet()) {
-			int idx = playLists.get(number) - PlayCode.START_IDX;
-			arr[idx] = number;
+			PlayCard playCard = playLists.get(number);
+			arr[playCard.getIndex() - PlayCode.START_IDX] = number;
 		}
 		return Arrays.toString(arr);
 	}

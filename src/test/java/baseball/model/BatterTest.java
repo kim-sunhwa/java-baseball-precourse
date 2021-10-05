@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 class BatterTest {
 
@@ -25,10 +25,9 @@ class BatterTest {
 		return text.substring(openIdx, closeIdx);
 	}
 
-	@Test
+	@RepeatedTest(20)
 	@DisplayName("컴퓨터 1-9 범위 3자리 숫자 생성 확인")
 	void checkNumberLength() {
-		System.out.println(batterNumber);
 		HashSet<String> set = new HashSet<>(Arrays.asList(batterNumber.split("")));
 
 		assertNotNull(batterNumber);

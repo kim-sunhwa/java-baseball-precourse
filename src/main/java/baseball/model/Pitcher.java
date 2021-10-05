@@ -20,6 +20,10 @@ public class Pitcher {
 		this.numbers = new HashMap<>();
 	}
 
+	public Map<Integer, Integer> play() {
+		return this.numbers;
+	}
+
 	public void strategy(String number) {
 		isValid(number);
 		int idx = PlayCode.START_IDX;
