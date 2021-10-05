@@ -1,12 +1,14 @@
 package baseball;
 
-import baseball.model.Batter;
+import baseball.controller.BaseballField;
 
 public class Application {
 	public static void main(String[] args) {
 		// TODO 숫자 야구 게임 구현
-		Batter batter = new Batter();
-		System.out.println(batter.toString());
+
+		BaseballField baseballField = new BaseballField();
+		baseballField.start();
 
 	}
+
 }
