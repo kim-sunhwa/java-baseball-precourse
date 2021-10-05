@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.commons.exceptions.BaseException;
-import baseball.commons.response.PlayCode;
+import baseball.commons.response.Message;
 import baseball.service.Refree;
 import nextstep.utils.Console;
 
@@ -20,11 +20,11 @@ public class BaseballField {
 
 	private void readyToPlayer() {
 		try {
-			System.out.println(PlayCode.PLAY_START);
+			Message.go();
 			String playerNumber = Console.readLine();
 			this.refree.isValidPlayerStrategy(playerNumber);
 		} catch (BaseException exception) {
-			System.out.println(exception.getMessage());
+			Message.print(exception.getMessage());
 			readyToPlayer();
 		}
 	}
