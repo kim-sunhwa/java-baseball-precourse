@@ -16,6 +16,7 @@ public class Refree {
 	}
 
 	public void play() {
+		System.out.println("play ?? ");
 		Map<Integer, Integer> pitching = pitcher.play();
 		for (Integer number : pitching.keySet()) {
 			boolean strike = this.batter.isStrike(number, pitching.get(number));
@@ -23,5 +24,9 @@ public class Refree {
 			System.out.println("스트라이크 : " + strike);
 			System.out.println("볼 : " + ball);
 		}
+	}
+
+	public void isValidPlayerStrategy(String playerNumber) {
+		this.pitcher.isValid(playerNumber);
 	}
 }

@@ -32,7 +32,7 @@ public class Pitcher {
 		}
 	}
 
-	private void isValid(String stringNo) {
+	public void isValid(String stringNo) {
 		char[] chars = stringNo.toCharArray();
 		isNotNumberAndLength(stringNo);
 		if (isDuplicated(chars)) {

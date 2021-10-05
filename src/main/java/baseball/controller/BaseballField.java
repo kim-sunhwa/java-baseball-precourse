@@ -2,33 +2,30 @@ package baseball.controller;
 
 import baseball.commons.exceptions.BaseException;
 import baseball.commons.response.PlayCode;
-import baseball.model.Batter;
-import baseball.model.Pitcher;
 import baseball.service.Refree;
 import nextstep.utils.Console;
 
 public class BaseballField {
 
-	public void start() {
-		Batter batter = new Batter();
-		System.out.println(batter);
-		Pitcher pitcher = readyToPlayer();
+	private final Refree refree;
 
-		Refree refree = new Refree(batter, pitcher);
-		refree.play();
+	public BaseballField(Refree refree) {
+		this.refree = refree;
 	}
 
-	private Pitcher readyToPlayer() {
+	public void start() {
+		readyToPlayer();
+		this.refree.play();
+	}
+
+	private void readyToPlayer() {
 		try {
-			Pitcher pitcher = new Pitcher();
 			System.out.println(PlayCode.PLAY_START);
-			String s = Console.readLine();
-			pitcher.strategy(s);
-			return pitcher;
+			String playerNumber = Console.readLine();
+			this.refree.isValidPlayerStrategy(playerNumber);
 		} catch (BaseException exception) {
 			System.out.println(exception.getMessage());
-			start();
+			readyToPlayer();
 		}
-		return null;
 	}
 }
